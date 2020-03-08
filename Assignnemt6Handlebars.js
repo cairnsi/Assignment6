@@ -5,6 +5,7 @@ var handlebars = require('express-handlebars').create({defaultLayout:'main'});
 var bodyParser = require('body-parser');
 var credentials = require('./credentials.js');
 var request = require('request');
+var mysql = require('mysql');
 
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
@@ -15,10 +16,30 @@ app.set('view engine', 'handlebars');
 app.set('port', 3129);
 
 
+var pool = mysql.createPool({
+  connectionLimit : 10,
+  host            : 'classmysql.engr.oregonstate.edu',
+  user            : 'cs290_cairnsi',
+  password        : '0826',
+  database        : 'cs290_cairnsi'
+});
 
 
 app.get('/',function(req,res){
   var context = {};
+  pool.query("DROP TABLE IF EXISTS workouts", function(err){ //replace your connection pool with the your variable containing the connection pool
+    var createString = "CREATE TABLE workouts("+
+    "id INT PRIMARY KEY AUTO_INCREMENT,"+
+    "name VARCHAR(255) NOT NULL,"+
+    "reps INT,"+
+    "weight INT,"+
+    "date DATE,"+
+    "lbs BOOLEAN)";
+    pool.query(createString, function(err){
+      context.results = "Table reset";
+      res.render('home',context);
+    })
+  });
   res.render('home',context);
 });
 
