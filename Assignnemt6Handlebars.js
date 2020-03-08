@@ -38,6 +38,7 @@ app.get('/',function(req,res){
     pool.query(createString, function(err){
       context.results = "Table reset";
       res.render('home',context);
+	  return;
     })
   });
   res.render('home',context);
