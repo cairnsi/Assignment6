@@ -44,8 +44,9 @@ app.get('/tableReset',function(req,res){
       context.results = "Table reset";
       res.render('reset',context);
 	  return;
-    })
+    });
   });
+});
 
 app.post('/', function(req,res,next){
   
