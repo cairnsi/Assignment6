@@ -27,6 +27,11 @@ var pool = mysql.createPool({
 
 app.get('/',function(req,res){
   var context = {};
+   res.render('home',context);
+});
+
+app.get('/tableReset',function(req,res){
+  var context = {};
   pool.query("DROP TABLE IF EXISTS workouts", function(err){ //replace your connection pool with the your variable containing the connection pool
     var createString = "CREATE TABLE workouts("+
     "id INT PRIMARY KEY AUTO_INCREMENT,"+
@@ -37,11 +42,10 @@ app.get('/',function(req,res){
     "lbs BOOLEAN)";
     pool.query(createString, function(err){
       context.results = "Table reset";
-      res.render('home',context);
+      res.render('reset',context);
 	  return;
     })
   });
-});
 
 app.post('/', function(req,res,next){
   
