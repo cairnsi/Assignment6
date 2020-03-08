@@ -41,7 +41,6 @@ app.get('/',function(req,res){
 	  return;
     })
   });
-  res.render('home',context);
 });
 
 app.post('/', function(req,res,next){
