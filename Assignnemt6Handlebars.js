@@ -49,7 +49,7 @@ app.post('/tableInsert',function(req,res,next){
 			var data={};
 			res.json(JSON.stringify(result));
 		}
-	}
+	});
 	
 });
 
