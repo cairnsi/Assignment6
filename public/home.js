@@ -2,7 +2,7 @@
 function clearMessages(){
 	 var messages = document.getElementsByClassName('message');
 	 for (i = 0; i < messages.length; i++) {
-		 messages[i].value="";
+		 messages[i].textContent="";
 	 }
 }
 function bindButtons(){
@@ -13,15 +13,17 @@ function bindButtons(){
 	  req.open('POST', '/tableInsert', true);
 	  req.setRequestHeader('Content-Type', 'application/json');
 	  req.addEventListener('load',function(){
+	  clearMessages();
 	  if(req.status >= 200 && req.status < 400){
 		var response = JSON.parse(req.responseText);
 		 document.getElementById('name').value="";
-		 clearMessages();
 		 document.getElementById('addMessage').textContent="Successful Insert";
 		 document.getElementById('addMessage').style.color='green';
 		
 	  } else {
 		console.log("Error in network request: " + req.statusText);
+		document.getElementById('addMessage').textContent="Could Not Insert";
+		document.getElementById('addMessage').style.color='red';
 	  }});
 	  req.send(JSON.stringify(payload));
 	  event.preventDefault();
