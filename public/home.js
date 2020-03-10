@@ -17,7 +17,7 @@ function bindButtons(){
 		var response = JSON.parse(req.responseText);
 		 document.getElementById('name').value="";
 		 clearMessages();
-		 document.getElementById('addMessage').value="Successful Insert";
+		 document.getElementById('addMessage').textContent="Successful Insert";
 		 document.getElementById('addMessage').style.color='green';
 		
 	  } else {
