@@ -64,7 +64,7 @@ app.post('/tableReset',function(req,res,next){
 		"weight INT,"+
 		"date DATE,"+
 		"lbs BOOLEAN)";
-		pool.query(createString, function(err
+		pool.query(createString, function(err){
 			if(!err){
 				var data={};
 				data.result = "Table reset";
