@@ -1,5 +1,10 @@
 
-
+function clearMessages(){
+	 var messages = document.getElementsByClassName('message');
+	 for (i = 0; i < messages.length; i++) {
+		 messages[i].value="";
+	 }
+}
 function bindButtons(){
   document.getElementById('insertSubmit').addEventListener('click', function(event){
 	  var req = new XMLHttpRequest();
@@ -11,6 +16,9 @@ function bindButtons(){
 	  if(req.status >= 200 && req.status < 400){
 		var response = JSON.parse(req.responseText);
 		 document.getElementById('name').value="";
+		 clearMessages();
+		 document.getElementById('addMessage').value="Successful Insert";
+		 document.getElementById('addMessage').style.color='green';
 		
 	  } else {
 		console.log("Error in network request: " + req.statusText);
