@@ -30,26 +30,53 @@ app.get('/',function(req,res){
    res.render('home',context);
 });
 
-app.get('/tableReset',function(req,res){
-  var context = {};
-  pool.query("DROP TABLE IF EXISTS workouts", function(err){ //replace your connection pool with the your variable containing the connection pool
-    var createString = "CREATE TABLE workouts("+
-    "id INT PRIMARY KEY AUTO_INCREMENT,"+
-    "name VARCHAR(255) NOT NULL,"+
-    "reps INT,"+
-    "weight INT,"+
-    "date DATE,"+
-    "lbs BOOLEAN)";
-    pool.query(createString, function(err){
-	  var result={};
-	  result.data = "Table reset";
-      res.json(JSON.stringify(result));
-	  return;
-    });
+app.get('/table', function(req,res){
+	pool.query("Select * FROM workouts", function(err,result){ 
+    if(!err){
+		res.json(JSON.stringify(result));
+	}else{
+		next(err);
+	}
   });
-  res.type('plain/text');
-  res.status(500);
-  res.render('500');
+});
+
+app.post('/tableInsert',function(req,res,next){
+	pool.query("INSERT INTO workouts (`name`) VALUES (?)", [req.body.name], function(err, result){
+		if(err){
+			next(err);
+			return;
+		}else{
+			var data={};
+			res.json(JSON.stringify(result));
+		}
+	}
+	
+});
+
+app.post('/tableReset',function(req,res,next){
+  var context = {};
+  pool.query("DROP TABLE IF EXISTS workouts", function(err){ 
+    if(!err){
+		var createString = "CREATE TABLE workouts("+
+		"id INT PRIMARY KEY AUTO_INCREMENT,"+
+		"name VARCHAR(255) NOT NULL,"+
+		"reps INT,"+
+		"weight INT,"+
+		"date DATE,"+
+		"lbs BOOLEAN)";
+		pool.query(createString, function(err
+			if(!err){
+				var data={};
+				data.result = "Table reset";
+				res.json(JSON.stringify(data));
+			}else{
+				next(err);
+			}
+		});
+	}else{
+		next(err);
+	}
+  });
 });
 
 app.post('/', function(req,res,next){
