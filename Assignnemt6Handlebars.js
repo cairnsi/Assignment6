@@ -42,7 +42,7 @@ app.get('/table', function(req,res){
 });
 
 app.post('/tableInsert',function(req,res,next){
-	pool.query("INSERT INTO workouts (`name`) VALUES (?)", [req.body.name], function(err, result){
+	pool.query("INSERT INTO workouts (`name`,`reps`,`weight`,`date`,`lbs`) VALUES (?)", [req.body.name,req.body.reps,req.body.weight,req.body,date,req.body.unit], function(err, result){
 		if(err){
 			next(err);
 			return;
@@ -54,7 +54,7 @@ app.post('/tableInsert',function(req,res,next){
 	
 });
 
-app.post('/tableReset',function(req,res,next){
+app.get('/tableReset',function(req,res,next){
   var context = {};
   pool.query("DROP TABLE IF EXISTS workouts", function(err){ 
     if(!err){
@@ -64,7 +64,7 @@ app.post('/tableReset',function(req,res,next){
 		"reps INT,"+
 		"weight INT,"+
 		"date DATE,"+
-		"lbs BOOLEAN)";
+		"lbs VARCHAR(255))";
 		pool.query(createString, function(err){
 			if(!err){
 				var data={};
