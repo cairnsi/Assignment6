@@ -12,14 +12,12 @@ function displayTable(){
 	  req.setRequestHeader('Content-Type', 'application/json');
 	  req.addEventListener('load',function(){
 		  var response = JSON.parse(req.responseText);
+		  document.getElementById('workoutList').innerHTML="";
 		  
-		  var length = response.length;
-		  var next = response[0];
-		  for(item in response.childNodes){
-			  var test2= item;
-			  var test9="{{}}"
+		  for(int i = 0;i<response.length;i++){
+			  var item = response[i];
+			  
 		  }
-		  var test = "hwllo";
 	  });
 	  req.send();
 }
