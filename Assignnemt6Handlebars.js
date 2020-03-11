@@ -33,7 +33,8 @@ app.get('/',function(req,res){
 app.get('/table', function(req,res){
 	pool.query("Select * FROM workouts", function(err,result){ 
     if(!err){
-		res.json(JSON.stringify(result));
+		res.json('"result":'+JSON.stringify(result));
+		
 	}else{
 		next(err);
 	}

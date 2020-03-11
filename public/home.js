@@ -7,14 +7,28 @@ function clearMessages(){
 }
 
 function displayTable(){
-	
+	var req = new XMLHttpRequest();
+	req.open('GET', '/table', true);
+	  req.setRequestHeader('Content-Type', 'application/json');
+	  req.addEventListener('load',function(){
+		  var response = JSON.parse(req.responseText);
+		  
+		  var length = response.length;
+		  var next = response[0];
+		  for(item in response.childNodes){
+			  var test2= item;
+			  var test9="{{}}"
+		  }
+		  var test = "hwllo";
+	  });
+	  req.send();
 }
 function bindButtons(){
   document.getElementById('insertSubmit').addEventListener('click', function(event){
 	  var req = new XMLHttpRequest();
 	  var payload = {name:null};
-	  clearMessages();
 	  if(document.getElementById('name').value==""){
+		  clearMessages();
 		 document.getElementById('addMessage').textContent="Name cannot be empty";
 		 document.getElementById('addMessage').style.color='red';
 		 event.preventDefault();
@@ -28,6 +42,7 @@ function bindButtons(){
 	  req.open('POST', '/tableInsert', true);
 	  req.setRequestHeader('Content-Type', 'application/json');
 	  req.addEventListener('load',function(){
+	  clearMessages();
 	  if(req.status >= 200 && req.status < 400){
 		var response = JSON.parse(req.responseText);
 		 document.getElementById('name').value="";
