@@ -14,8 +14,22 @@ function displayTable(){
 		  var response = JSON.parse(req.responseText);
 		  document.getElementById('workoutList').innerHTML="";
 		  
+		  var table = document.getElementById('workoutList');
+		  table.innerHTML="";
+		  var row = table.insertRow();
+		  var cell = row.insertCell();
+		  cell.textContent = "Name";
+		  cell = row.insertCell();
+		  cell.textContent = "Reps";
+		  cell = row.insertCell();
+		  cell.textContent = "Weight";
+		  cell = row.insertCell();
+		  cell.textContent = "Unit";
+		  cell = row.insertCell();
+		  cell.textContent = "Date";
 		  for(var i = 0;i<response.length;i++){
 			  var item = response[i];
+			  
 			  
 		  }
 	  });
