@@ -17,6 +17,7 @@ function bindButtons(){
 	  if(document.getElementById('name').value==""){
 		 document.getElementById('addMessage').textContent="Name cannot be empty";
 		 document.getElementById('addMessage').style.color='red';
+		 event.preventDefault();
 		 return;
 	  }
 	  payload.name = document.getElementById('name').value;
