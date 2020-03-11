@@ -17,7 +17,8 @@ function displayTable(){
 		  var table = document.getElementById('workoutList');
 		  table.innerHTML="";
 		  var row = table.insertRow();
-		  var cell = row.createElement("TH");
+		  row.innerHTML = "<th>Name</th><th>Reps</th><th>Weight</th><th>Date</th><th>Unit</th>"
+		  /*var cell = row.createElement("TH");
 		  cell.textContent = "Name";
 		  cell = row.createElement("TH");
 		  cell.textContent = "Reps";
@@ -26,7 +27,7 @@ function displayTable(){
 		  cell = row.createElement("TH");
 		  cell.textContent = "Unit";
 		  cell = row.createElement("TH");
-		  cell.textContent = "Date";
+		  cell.textContent = "Date";*/
 		  for(var i = 0;i<response.length;i++){
 			  var item = response[i];
 			  
