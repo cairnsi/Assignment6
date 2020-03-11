@@ -35,8 +35,6 @@ function displayTable(){
 			  cell.textContent = item.id;
 			  cell.style.visibility = "hidden";
 			  cell.id = "rowId";
-			  
-			  
 		  }
 	  });
 	  req.send();
@@ -80,4 +78,4 @@ function bindButtons(){
 }
 
 document.addEventListener('DOMContentLoaded', bindButtons);
-
+displayTable()
