@@ -14,7 +14,7 @@ function displayTable(){
 		  var response = JSON.parse(req.responseText);
 		  document.getElementById('workoutList').innerHTML="";
 		  
-		  for(int i = 0;i<response.length;i++){
+		  for(var i = 0;i<response.length;i++){
 			  var item = response[i];
 			  
 		  }
