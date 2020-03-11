@@ -63,7 +63,7 @@ app.get('/tableReset',function(req,res,next){
 		"name VARCHAR(255) NOT NULL,"+
 		"reps INT,"+
 		"weight INT,"+
-		"date DATE,"+
+		"date VARCHAR(255),"+
 		"lbs VARCHAR(255))";
 		pool.query(createString, function(err){
 			if(!err){
