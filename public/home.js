@@ -49,6 +49,7 @@ function bindButtons(){
 		 document.getElementById('reps').reps="";
 		 document.getElementById('addMessage').textContent="Successful Insert";
 		 document.getElementById('addMessage').style.color='green';
+		 displayTable()
 		
 	  } else {
 		console.log("Error in network request: " + req.statusText);
