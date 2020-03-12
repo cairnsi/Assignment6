@@ -45,15 +45,21 @@ app.get('/table', function(req,res){
 //`name`,`reps`,`weight`,`date`,`lbs`
 //req.body.name,req.body.reps,req.body.weight,req.body.date,req.body.units
 app.post('/tableInsert',function(req,res,next){
-	pool.query("INSERT INTO workouts (`name`,`reps`) VALUES (?)", [[req.body.name,req.body.reps]], function(err, result){
-		if(err){
-			next(err);
-			return;
-		}else{
-			var data={};
-			res.json(JSON.stringify(result));
-		}
-	});
+	if(req.body.name && req.body.name!=""){
+		pool.query("INSERT INTO workouts (`name`,`reps`,`weight`,`date`,`lbs`) VALUES (?)", [[req.body.name,req.body.reps,req.body.weight,req.body.date,req.body.units]], function(err, result){
+			if(err){
+				next(err);
+				return;
+			}else{
+				var data={};
+				res.json(JSON.stringify(result));
+			}
+		});
+	}else{
+		res.type('plain/text');
+		res.status(500);
+		res.render('500');
+	}
 	
 });
 
