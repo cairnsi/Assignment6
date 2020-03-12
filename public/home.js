@@ -11,33 +11,44 @@ function displayTable(){
 	req.open('GET', '/table', true);
 	  req.setRequestHeader('Content-Type', 'application/json');
 	  req.addEventListener('load',function(){
-		  var response = JSON.parse(req.responseText);
 		  document.getElementById('workoutList').innerHTML="";
-		  
 		  var table = document.getElementById('workoutList');
-		  table.innerHTML="";
-		  var row = table.insertRow();
-		  row.innerHTML = "<th>Name</th><th>Reps</th><th>Weight</th><th>Unit</th><th>Date</th>";
-		  for(var i = 0;i<response.length;i++){
-			  var item = response[i];
-			  row = table.insertRow();
-			  var cell = cell = row.insertCell();
-			  cell.textContent = item.name;
-			  cell = row.insertCell();
-			  cell.textContent = item.reps;
-			  cell = row.insertCell();
-			  cell.textContent = item.weight;
-			  cell = row.insertCell();
-			  cell.textContent = item.lbs;
-			  cell = row.insertCell();
-			  cell.textContent = item.date;
-			  cell = row.insertCell();
-			  cell.textContent = item.id;
-			  cell.style.visibility = "hidden";
-			  cell.id = "rowId";
+		  if(req.status >= 200 && req.status < 400){
+			  var response = JSON.parse(req.responseText);
+			  if(response.length<1){
+				var row = table.insertRow();
+				row.innerHTML = "<th>Table is empty</th>"
+			  }
+			  
+			  table.innerHTML="";
+			  var row = table.insertRow();
+			  row.innerHTML = "<th>Name</th><th>Reps</th><th>Weight</th><th>Unit</th><th>Date</th>";
+			  for(var i = 0;i<response.length;i++){
+				  var item = response[i];
+				  row = table.insertRow();
+				  var cell = cell = row.insertCell();
+				  cell.textContent = item.name;
+				  cell = row.insertCell();
+				  cell.textContent = item.reps;
+				  cell = row.insertCell();
+				  cell.textContent = item.weight;
+				  cell = row.insertCell();
+				  cell.textContent = item.lbs;
+				  cell = row.insertCell();
+				  cell.textContent = item.date;
+				  cell = row.insertCell();
+				  cell.textContent = item.id;
+				  cell.style.visibility = "hidden";
+				  cell.id = "rowId";
+			  }
+		  }else{
+			  var row = table.insertRow();
+			  row.innerHTML = "<th>Did not get data for Table</th>"
+			  
 		  }
 	  });
 	  req.send();
+	  
 }
 function bindButtons(){
   document.getElementById('insertSubmit').addEventListener('click', function(event){
