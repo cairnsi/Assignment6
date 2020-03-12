@@ -18,9 +18,10 @@ function displayTable(){
 			  if(response.length<1){
 				var row = table.insertRow();
 				row.innerHTML = "<th>Table is empty</th>"
+				document.getElementById('tableReset').visibility = "hidden";
 				return;
 			  }
-			  
+			  document.getElementById('tableReset').visibility = "visible";
 			  
 			  table.innerHTML="";
 			  var row = table.insertRow();
