@@ -28,7 +28,7 @@ function displayTable(){
 			  cell = row.insertCell();
 			  cell.textContent = item.weight;
 			  cell = row.insertCell();
-			  cell.textContent = item.unit;
+			  cell.textContent = item.lbs;
 			  cell = row.insertCell();
 			  cell.textContent = item.date;
 			  cell = row.insertCell();
