@@ -98,7 +98,7 @@ function bindButtons(){
   
   document.getElementById('tableReset').addEventListener('click', function(event){
 	  var req = new XMLHttpRequest();
-	  req.open('POST', '/resetTable', true);
+	  req.open('POST', '/tableReset', true);
 	  req.setRequestHeader('Content-Type', 'application/json');
 	  req.addEventListener('load',function(){
 		    clearMessages();
