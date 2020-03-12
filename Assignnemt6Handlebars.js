@@ -46,6 +46,12 @@ app.get('/table', function(req,res){
 //req.body.name,req.body.reps,req.body.weight,req.body.date,req.body.units
 app.post('/tableInsert',function(req,res,next){
 	if(req.body.name && req.body.name!=""){
+		if(req.body.reps==""){
+			req.body.reps=null;
+		}
+		if(req.body.weight==""){
+			req.body.weight=null;
+		}
 		pool.query("INSERT INTO workouts (`name`,`reps`,`weight`,`date`,`lbs`) VALUES (?)", [[req.body.name,req.body.reps,req.body.weight,req.body.date,req.body.units]], function(err, result){
 			if(err){
 				next(err);
