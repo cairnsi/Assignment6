@@ -95,6 +95,23 @@ function bindButtons(){
 	  req.send(JSON.stringify(payload));
 	  event.preventDefault();
   });
+  
+  document.getElementById('tableReset').addEventListener('click', function(event){
+	  var req = new XMLHttpRequest();
+	  req.open('POST', '/resetTable', true);
+	  req.setRequestHeader('Content-Type', 'application/json');
+	  req.addEventListener('load',function(){
+		    clearMessages();
+			if(req.status < 200 && req.status >= 400){
+				document.getElementById('addMessage').textContent="Could Not Clear Table";
+				document.getElementById('addMessage').style.color='red';
+			}
+			displayTable()
+			
+		});
+		req.send();
+		event.preventDefault();
+  });
 }
 
 document.addEventListener('DOMContentLoaded', bindButtons);

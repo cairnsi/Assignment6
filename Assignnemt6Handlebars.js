@@ -69,7 +69,7 @@ app.post('/tableInsert',function(req,res,next){
 	
 });
 
-app.get('/tableReset',function(req,res,next){
+app.post('/tableReset',function(req,res,next){
   var context = {};
   pool.query("DROP TABLE IF EXISTS workouts", function(err){ 
     if(!err){
