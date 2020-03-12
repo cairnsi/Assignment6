@@ -18,6 +18,7 @@ function displayTable(){
 			  if(response.length<1){
 				var row = table.insertRow();
 				row.innerHTML = "<th>Table is empty</th>"
+				return;
 			  }
 			  
 			  table.innerHTML="";
