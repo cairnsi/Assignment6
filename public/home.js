@@ -91,21 +91,20 @@ function bindDelete(elementID){
 
 function bindEdit(item){
 	return function(){
-		//var req = new XMLHttpRequest();
+		var req = new XMLHttpRequest();
 		var path = '/editItem?id='+item.id+'&name='+item.name+'&reps='+item.reps+'&weight='+item.weight+'&units='+item.lbs+'&date='+item.date;
-		/*req.open('GET', path, false);
-	    /*req.addEventListener('load',function(){
+		req.open('GET', path, false);
+	    req.addEventListener('load',function(){
 			clearMessages();
 			if(req.status >= 200 && req.status < 400){
-				displayTable();
+				location.href = path;
 			} else {
 				console.log("Error in network request: " + req.statusText);
 				document.getElementById('addMessage').textContent="Could Not Edit";
 				document.getElementById('addMessage').style.color='red';
 			}
 		});
-	    req.send();*/
-		location.href = path;
+	    req.send();
 	}
 }
 
