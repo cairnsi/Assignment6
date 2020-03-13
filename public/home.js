@@ -40,11 +40,11 @@ function displayTable(){
 				  cell = row.insertCell();
 				  cell.textContent = item.date;
 				  
-				  cell = row.insertCell();
+				  //cell = row.insertCell();
 				  var btn = document.createElement('input');
 				  btn.type = "button";
 				  btn.className = "btn";
-				  cell.appendChild(btn);
+				  row.appendChild(btn);
 				  
 				  cell = row.insertCell();
 				  cell.textContent = item.id;
