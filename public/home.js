@@ -43,6 +43,7 @@ function displayTable(){
 				  var btn = document.createElement('button');
 				  btn.setAttribute('class', 'edit');
 				  btn.innerHTML = 'Edit';
+				  btn.onclick =  bindEdit(item);
 				  row.appendChild(btn);
 				  
 				  btn = document.createElement('button');
@@ -85,6 +86,26 @@ function bindDelete(elementID){
 			}
 		});
 	  req.send(JSON.stringify(payload));
+	}
+}
+
+function bindEdit(item){
+	return function(){
+		var req = new XMLHttpRequest();
+		var path = '/editItem?id='+item.id+'&name='+item.name+'&weight='+item.weight+'&units='+item.lbs+'&date='+item.date;
+		req.open('GET', path, true);
+	    req.setRequestHeader('Content-Type', 'application/json');
+	    req.addEventListener('load',function(){
+			clearMessages();
+			if(req.status >= 200 && req.status < 400){
+				displayTable();
+			} else {
+				console.log("Error in network request: " + req.statusText);
+				document.getElementById('addMessage').textContent="Could Not Edit";
+				document.getElementById('addMessage').style.color='red';
+			}
+		});
+	    req.send();
 	}
 }
 

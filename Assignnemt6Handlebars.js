@@ -43,7 +43,9 @@ app.get('/editItem',function(req,res){
     res.render('edit',context);
     return;
   }
-  res.render('home',context);
+  res.type('plain/text');
+  res.status(500);
+  res.render('500');
 });
 
 app.get('/table', function(req,res){
