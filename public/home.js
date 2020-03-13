@@ -93,13 +93,13 @@ function bindEdit(item){
 	return function(){
 		var req = new XMLHttpRequest();
 		if(!item.reps)
-			item.reps = "";
+			item.reps = "what";
 		if(!item.weight)
-			item.weight="";
+			item.weight="wat";
 		if(!item.lbs)
-			item.lbs="";
+			item.lbs="aff";
 		if(!item.date)
-			item.date="";
+			item.date="afaf";
 		var path = '/editItem?id='+item.id+'&name='+item.name+'&reps='+item.reps+'&weight='+item.weight+'&units='+item.lbs+'&date='+item.date;
 		req.open('GET', path, false);
 	    req.addEventListener('load',function(){
