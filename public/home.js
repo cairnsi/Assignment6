@@ -43,13 +43,13 @@ function displayTable(){
 				  var btn = document.createElement('input');
 				  btn.type = "button";
 				  btn.className = "edit";
-				  btn.textContent = "Edit";
+				  btn.innerHTML = "Edit";
 				  row.appendChild(btn);
 				  
 				  btn = document.createElement('input');
 				  btn.type = "button";
 				  btn.className = "delete";
-				  btn.textContent = "Delete";
+				  btn.innerHTML = "Delete";
 				  row.appendChild(btn);
 				  
 				  cell = row.insertCell();
