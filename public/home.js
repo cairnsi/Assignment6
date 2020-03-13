@@ -44,13 +44,13 @@ function displayTable(){
 				  var btn = document.createElement('button');
 				  btn.setAttribute('class', 'edit');
 				  btn.innerHTML = 'Edit';
-				  cell.appendChild(btn);
+				  row.appendChild(btn);
 				  
 				  cell = row.insertCell();
 				  btn = document.createElement('button');
 				  btn.setAttribute('class', 'delete');
 				  btn.innerHTML = 'Delete';
-				  cell.appendChild(btn);
+				  row.appendChild(btn);
 				  
 				  cell = row.insertCell();
 				  cell.textContent = item.id;
