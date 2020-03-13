@@ -48,6 +48,7 @@ function displayTable(){
 				  btn = document.createElement('button');
 				  btn.setAttribute('class', 'delete');
 				  btn.innerHTML = 'Delete';
+				  btn.style.marginLeft = "5px"
 				  row.appendChild(btn);
 				  
 				  cell = row.insertCell();
