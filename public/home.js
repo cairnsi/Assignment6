@@ -41,6 +41,9 @@ function displayTable(){
 				  cell.textContent = item.date;
 				  cell = row.insertCell();
 				  cell.textContent = item.id;
+				  cell = row.insertCell();
+				  var btn = cell.createElement("Button");
+				  btn.textContent = "Edit";
 				  cell.style.visibility = "hidden";
 				  cell.id = "rowId";
 			  }
