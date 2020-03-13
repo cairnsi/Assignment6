@@ -40,13 +40,11 @@ function displayTable(){
 				  cell = row.insertCell();
 				  cell.textContent = item.date;
 				  
-				  cell = row.insertCell();
 				  var btn = document.createElement('button');
 				  btn.setAttribute('class', 'edit');
 				  btn.innerHTML = 'Edit';
 				  row.appendChild(btn);
 				  
-				  cell = row.insertCell();
 				  btn = document.createElement('button');
 				  btn.setAttribute('class', 'delete');
 				  btn.innerHTML = 'Delete';
