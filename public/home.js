@@ -42,8 +42,10 @@ function displayTable(){
 				  cell = row.insertCell();
 				  cell.textContent = item.id;
 				  cell = row.insertCell();
-				  var btn = cell.createElement("Button");
-				  btn.textContent = "Edit";
+				  var btn = document.createElement('input');
+				  btn.type = "button";
+				  btn.className = "btn";
+				  cell.appendChild(btn);
 				  cell.style.visibility = "hidden";
 				  cell.id = "rowId";
 			  }
