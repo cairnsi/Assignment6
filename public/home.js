@@ -92,6 +92,14 @@ function bindDelete(elementID){
 function bindEdit(item){
 	return function(){
 		var req = new XMLHttpRequest();
+		if(!item.reps)
+			item.reps = "";
+		if(!item.weight)
+			item.weight="";
+		if(!item.lbs)
+			item.lbs="";
+		if(!item.date)
+			item.date="";
 		var path = '/editItem?id='+item.id+'&name='+item.name+'&reps='+item.reps+'&weight='+item.weight+'&units='+item.lbs+'&date='+item.date;
 		req.open('GET', path, false);
 	    req.addEventListener('load',function(){
