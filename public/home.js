@@ -40,17 +40,19 @@ function displayTable(){
 				  cell = row.insertCell();
 				  cell.textContent = item.date;
 				  
+				  cell = row.insertCell();
 				  var btn = document.createElement('input');
 				  btn.type = "button";
 				  btn.className = "edit";
 				  btn.innerHTML = "Edit";
-				  row.appendChild(btn);
+				  cell.appendChild(btn);
 				  
+				  cell = row.insertCell();
 				  btn = document.createElement('input');
 				  btn.type = "button";
 				  btn.className = "delete";
 				  btn.innerHTML = "Delete";
-				  row.appendChild(btn);
+				  cell.appendChild(btn);
 				  
 				  cell = row.insertCell();
 				  cell.textContent = item.id;
