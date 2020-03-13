@@ -32,7 +32,16 @@ app.get('/',function(req,res){
 
 app.get('/editItem',function(req,res){
   var context = {};
-  if(req.query.name && req.query.reps && req.query.weight && req.query.date && req.query.units && req.query.id){
+  if(req.query.id){
+	if(!req.query.reps)
+		req.query.reps = "";
+	if(!req.query.weight)
+		req.query.weight="";
+	if(!req.query.lbs)
+		req.query.lbs="";
+	if(!req.query.date)
+		req.query.date="";
+	
 	context.name = req.query.name;
 	context.reps = req.query.reps;
 	context.weight = req.query.weight;
