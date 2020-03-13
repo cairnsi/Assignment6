@@ -30,6 +30,22 @@ app.get('/',function(req,res){
    res.render('home',context);
 });
 
+app.get('/editItem',function(req,res){
+  var context = {};
+  if(req.query.name && req.query.reps && req.query.weight && req.query.date && req.query.units && req.query.id){
+	context.name = req.query.name;
+	context.reps = req.query.reps;
+	context.weight = req.query.weight;
+	context.date = req.query.date;
+	context.units = req.query.units;
+	context.id = req.query.id;
+	  
+    res.render('edit',context);
+    return;
+  }
+  res.render('home',context);
+});
+
 app.get('/table', function(req,res){
 	pool.query("Select * FROM workouts", function(err,result){ 
     if(!err){

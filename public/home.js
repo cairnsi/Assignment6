@@ -61,12 +61,12 @@ function displayTable(){
 		  }else{
 			  var row = table.insertRow();
 			  row.innerHTML = "<th>Did not get data for Table</th>"
-			  
 		  }
 	  });
 	  req.send();
 	  
 }
+
 function bindDelete(elementID){
 	return function(){
 		var req = new XMLHttpRequest();
@@ -85,11 +85,9 @@ function bindDelete(elementID){
 			}
 		});
 	  req.send(JSON.stringify(payload));
-		
-		
 	}
-	
 }
+
 function bindButtons(){
   document.getElementById('insertSubmit').addEventListener('click', function(event){
 	  var req = new XMLHttpRequest();
@@ -123,7 +121,6 @@ function bindButtons(){
 		 document.getElementById('addMessage').textContent="Successful Insert";
 		 document.getElementById('addMessage').style.color='green';
 		 displayTable();
-		
 	  } else {
 		console.log("Error in network request: " + req.statusText);
 		document.getElementById('addMessage').textContent="Could Not Insert";
@@ -143,8 +140,7 @@ function bindButtons(){
 				document.getElementById('addMessage').textContent="Could Not Clear Table";
 				document.getElementById('addMessage').style.color='red';
 			}
-			displayTable()
-			
+			displayTable();
 		});
 		req.send();
 		event.preventDefault();
