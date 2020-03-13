@@ -41,17 +41,15 @@ function displayTable(){
 				  cell.textContent = item.date;
 				  
 				  cell = row.insertCell();
-				  var btn = document.createElement('input');
-				  btn.type = "button";
-				  btn.className = "edit";
-				  btn.innerHTML = "Edit";
+				  var btn = document.createElement('button');
+				  btn.setAttribute('class', 'edit');
+				  btn.innerHTML = 'Edit';
 				  cell.appendChild(btn);
 				  
 				  cell = row.insertCell();
-				  btn = document.createElement('input');
-				  btn.type = "button";
-				  btn.className = "delete";
-				  btn.innerHTML = "Delete";
+				  btn = document.createElement('button');
+				  btn.setAttribute('class', 'delete');
+				  btn.innerHTML = 'Delete';
 				  cell.appendChild(btn);
 				  
 				  cell = row.insertCell();
