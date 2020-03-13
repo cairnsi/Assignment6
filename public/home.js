@@ -39,13 +39,15 @@ function displayTable(){
 				  cell.textContent = item.lbs;
 				  cell = row.insertCell();
 				  cell.textContent = item.date;
-				  cell = row.insertCell();
-				  cell.textContent = item.id;
+				  
 				  cell = row.insertCell();
 				  var btn = document.createElement('input');
 				  btn.type = "button";
 				  btn.className = "btn";
 				  cell.appendChild(btn);
+				  
+				  cell = row.insertCell();
+				  cell.textContent = item.id;
 				  cell.style.visibility = "hidden";
 				  cell.id = "rowId";
 			  }
