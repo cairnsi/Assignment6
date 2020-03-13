@@ -92,7 +92,7 @@ function bindDelete(elementID){
 function bindEdit(item){
 	return function(){
 		var req = new XMLHttpRequest();
-		var path = '/editItem?id='+item.id+'&name='+item.name+'&weight='+item.weight+'&units='+item.lbs+'&date='+item.date;
+		var path = '/editItem?id='+item.id+'&name='+item.name+'&reps='+item.reps+'&weight='+item.weight+'&units='+item.lbs+'&date='+item.date;
 		req.open('GET', path, true);
 	    req.setRequestHeader('Content-Type', 'application/json');
 	    req.addEventListener('load',function(){
