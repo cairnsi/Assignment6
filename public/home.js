@@ -48,8 +48,10 @@ function displayTable(){
 				  btn = document.createElement('button');
 				  btn.setAttribute('class', 'delete');
 				  btn.innerHTML = 'Delete';
-				  btn.style.marginLeft = "5px"
+				  btn.style.marginLeft = "2px"
+				  btn.onclick =  bindDelete(item.id);
 				  row.appendChild(btn);
+				  
 				  
 				  cell = row.insertCell();
 				  cell.textContent = item.id;
@@ -64,6 +66,29 @@ function displayTable(){
 	  });
 	  req.send();
 	  
+}
+function bindDelete(elementID){
+	return function(){
+		var req = new XMLHttpRequest();
+		var payload = {id:null};
+		payload.id = elementID;
+		req.open('POST', '/tableDelete', true);
+	    req.setRequestHeader('Content-Type', 'application/json');
+	    req.addEventListener('load',function(){
+			clearMessages();
+			if(req.status >= 200 && req.status < 400){
+				displayTable();
+			} else {
+				console.log("Error in network request: " + req.statusText);
+				document.getElementById('addMessage').textContent="Could Not Insert";
+				document.getElementById('addMessage').style.color='red';
+			}
+		});
+	  req.send(JSON.stringify(payload));
+		
+		
+	}
+	
 }
 function bindButtons(){
   document.getElementById('insertSubmit').addEventListener('click', function(event){

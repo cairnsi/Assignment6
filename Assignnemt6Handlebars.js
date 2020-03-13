@@ -42,8 +42,6 @@ app.get('/table', function(req,res){
 });
 
 
-//`name`,`reps`,`weight`,`date`,`lbs`
-//req.body.name,req.body.reps,req.body.weight,req.body.date,req.body.units
 app.post('/tableInsert',function(req,res,next){
 	if(req.body.name && req.body.name!=""){
 		if(req.body.reps==""){
@@ -95,10 +93,27 @@ app.post('/tableReset',function(req,res,next){
   });
 });
 
+app.post('/tableDelete',function(req,res,next){
+  if(req.body.id){
+		pool.query("DELETE FROM workouts WHERE id = ?", req.body.id, function(err, result){
+			if(err){
+				next(err);
+				return;
+			}else{
+				var data={};
+				res.json(JSON.stringify(result));
+			}
+		});
+	}else{
+		res.type('plain/text');
+		res.status(500);
+		res.render('500');
+	}
+});
+
 app.post('/', function(req,res,next){
-  
-  
-  
+  var context = {};
+   res.render('home',context);
 });
 
 app.use(function(req,res){
