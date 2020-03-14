@@ -46,7 +46,14 @@ app.get('/editItem',function(req,res){
 	context.reps = req.query.reps;
 	context.weight = req.query.weight;
 	context.date = req.query.date;
-	context.units = req.query.units;
+	
+	if(req.query.units=="lbs"){
+		payload.lbs = "selected";
+	}
+	if(req.query.units=="kg"){
+		payload.kg = "selected";
+	}
+	
 	context.id = req.query.id;
 	  
     res.render('edit',context);
