@@ -31,6 +31,7 @@ function displayTable(){
 				  row = table.insertRow();
 				  var cell = cell = row.insertCell();
 				  cell.textContent = item.name;
+				  cell.style.width = "10%"
 				  cell = row.insertCell();
 				  cell.textContent = item.reps;
 				  cell = row.insertCell();
