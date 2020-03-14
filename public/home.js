@@ -31,15 +31,19 @@ function displayTable(){
 				  row = table.insertRow();
 				  var cell = cell = row.insertCell();
 				  cell.textContent = item.name;
-				  cell.style.width = "20%"
+				  cell.style.width = "20%";
 				  cell = row.insertCell();
 				  cell.textContent = item.reps;
+				  cell.style.width = "20%";
 				  cell = row.insertCell();
 				  cell.textContent = item.weight;
+				  cell.style.width = "20%";
 				  cell = row.insertCell();
 				  cell.textContent = item.lbs;
+				  cell.style.width = "20%";
 				  cell = row.insertCell();
 				  cell.textContent = item.date;
+				  cell.style.width = "20%";
 				  
 				  var btn = document.createElement('button');
 				  btn.setAttribute('class', 'edit');
