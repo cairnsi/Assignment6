@@ -130,14 +130,7 @@ function bindButtons(){
 	  payload.name = document.getElementById('name').value;
 	  payload.reps = document.getElementById('reps').value;
 	  payload.weight = document.getElementById('weight').value;
-	  var units = document.getElementsByName('unit');
-	  /*for(var p = 0; p<units.length;p++){
-		  if(units[p].checked){
-			  payload.units = units[p].value;
-			  break;
-		  }
-	  }*/
-	  payload.units = units.value;
+	  payload.units = document.getElementById('unit').value;
 	  payload.date = document.getElementById('date').value;
 	  req.open('POST', '/tableInsert', true);
 	  req.setRequestHeader('Content-Type', 'application/json');
