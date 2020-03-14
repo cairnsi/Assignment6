@@ -97,9 +97,9 @@ function bindDelete(elementID){
 function bindEdit(item){
 	return function(){
 		var req = new XMLHttpRequest();
-		if(!item.reps)
+		if(!item.reps && item.reps!="0")
 			item.reps = "";
-		if(!item.weight)
+		if(!item.weight && item.weight!="0")
 			item.weight="";
 		if(!item.lbs)
 			item.lbs="";
