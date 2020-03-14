@@ -104,6 +104,12 @@ app.post('/tableInsert',function(req,res,next){
 
 app.post('/update',function(req,res,next){
 	if(req.body.id){
+		if(req.body.reps==""){
+			req.body.reps=null;
+		}
+		if(req.body.weight==""){
+			req.body.weight=null;
+		}
 		pool.query("UPDATE workouts SET name = ?, reps= ?, weight= ?, date= ?, lbs = ? WHERE id = ?", [req.body.name,req.body.reps,req.body.weight,req.body.date,req.body.units,req.body.id], function(err, result){
 			if(err){
 				next(err);
