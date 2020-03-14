@@ -46,6 +46,7 @@ app.get('/editItem',function(req,res){
 	context.reps = req.query.reps;
 	context.weight = req.query.weight;
 	context.date = req.query.date;
+	context.id = req.query.id;
 	
 	if(req.query.units=="lbs"){
 		context.lbs = "selected";
@@ -85,6 +86,25 @@ app.post('/tableInsert',function(req,res,next){
 			req.body.weight=null;
 		}
 		pool.query("INSERT INTO workouts (`name`,`reps`,`weight`,`date`,`lbs`) VALUES (?)", [[req.body.name,req.body.reps,req.body.weight,req.body.date,req.body.units]], function(err, result){
+			if(err){
+				next(err);
+				return;
+			}else{
+				var data={};
+				res.json(JSON.stringify(result));
+			}
+		});
+	}else{
+		res.type('plain/text');
+		res.status(500);
+		res.render('500');
+	}
+	
+});
+
+app.post('/update',function(req,res,next){
+	if(req.body.id){
+		pool.query("UPDATE workouts SET name = ?, reps= ?, weight= ?, date= ?, lbs = ? WHERE id = ?", req.body.name,req.body.reps,req.body.weight,req.body.date,req.body.units,req.body.id, function(err, result){
 			if(err){
 				next(err);
 				return;
