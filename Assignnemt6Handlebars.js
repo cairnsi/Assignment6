@@ -48,10 +48,10 @@ app.get('/editItem',function(req,res){
 	context.date = req.query.date;
 	
 	if(req.query.units=="lbs"){
-		payload.lbs = "selected";
+		context.lbs = "selected";
 	}
 	if(req.query.units=="kg"){
-		payload.kg = "selected";
+		context.kg = "selected";
 	}
 	
 	context.id = req.query.id;
